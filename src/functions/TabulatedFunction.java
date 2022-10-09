@@ -101,18 +101,20 @@ public class TabulatedFunction {
 
     public void deletePoint(int index){
         if(index < getPointsCount() && index >= 0){
-            FunctionPoint[] tmp_before = new FunctionPoint[index-1];
-            FunctionPoint[] tmp_after = new FunctionPoint[getPointsCount()-index];
 
-            //Copy arrays to tmp
-            System.arraycopy(ValuesArray, 0, tmp_before, 0, index -1);
-            System.arraycopy(ValuesArray, index+1, tmp_after, index, getPointsCount()-index);
+            FunctionPoint[] result = new FunctionPoint[ValuesArray.length - 1];
 
-            this.ValuesArray = new FunctionPoint[tmp_before.length + tmp_after.length];
+            for (int i = 0; i < ValuesArray.length; i++) {
+                if (i != index) {
+                    int newIndex = i < index ? i : i - 1;
+                    result[newIndex] = ValuesArray[i];
+                }
+            }
 
-            //Add 2 tmp arrays to final array
-            System.arraycopy(ValuesArray, 0, tmp_before,0, tmp_before.length);
-            System.arraycopy(ValuesArray, 0, tmp_after,tmp_before.length, tmp_after.length);
+            //resize an existing array to new size
+            this.ValuesArray = new FunctionPoint[getPointsCount() + 1];
+
+            System.arraycopy(result, 0, ValuesArray, 0, result.length);
 
 
         }
@@ -125,23 +127,30 @@ public class TabulatedFunction {
         if (checkBorders(point)) {
 
             //Find index < x
-            int i = 0;
-            while (ValuesArray[i].getX() < point.getX()) i++;
+            int index = 0;
+            while (ValuesArray[index].getX() < point.getX()) index++;
 
             //New resized array
             FunctionPoint[] tmp = new FunctionPoint[getPointsCount() + 1];
 
-            //Add new point
-            tmp[i] = point;
+            int j = 0;
+            for (int i = 0; i < tmp.length - 1; i++) {
 
-            //Copy old array to new
-            System.arraycopy(ValuesArray, 0, tmp, 0, i);
-            System.arraycopy(ValuesArray, 0, tmp, i+1,getPointsCount()-i);
+                if (i == index) {
+                    tmp[i] = point;
+                } else {
+                    tmp[i] = ValuesArray[j];
+                    j++;
+                }
+            }
 
             //resize an existing array to new size
-            this.ValuesArray = new FunctionPoint[getPointsCount()+1];
-            ValuesArray = tmp;
+            this.ValuesArray = new FunctionPoint[getPointsCount() + 1];
+
+            System.arraycopy(tmp,0,ValuesArray,0,tmp.length);
+
         }
+
     }
 }
 

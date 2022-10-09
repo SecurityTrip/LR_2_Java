@@ -52,7 +52,7 @@ public class Main {
 
         }
 
-        FunctionPoints.deletePoint(0);
+        FunctionPoints.deletePoint(1);
         for (int i = 0; i < 19; ++i){
             System.out.print("( ");
             System.out.print(FunctionPoints.getPointX(i));

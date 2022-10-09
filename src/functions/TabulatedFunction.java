@@ -112,7 +112,7 @@ public class TabulatedFunction {
             }
 
             //resize an existing array to new size
-            this.ValuesArray = new FunctionPoint[getPointsCount() + 1];
+            this.ValuesArray = new FunctionPoint[ValuesArray.length - 1];
 
             System.arraycopy(result, 0, ValuesArray, 0, result.length);
 
@@ -131,7 +131,7 @@ public class TabulatedFunction {
             while (ValuesArray[index].getX() < point.getX()) index++;
 
             //New resized array
-            FunctionPoint[] tmp = new FunctionPoint[getPointsCount() + 1];
+            FunctionPoint[] tmp = new FunctionPoint[ValuesArray.length + 1];
 
             int j = 0;
             for (int i = 0; i < tmp.length - 1; i++) {

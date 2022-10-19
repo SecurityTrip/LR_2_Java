@@ -163,15 +163,11 @@ public class TabulatedFunction {
     public void addPoint(FunctionPoint point) {
         int index = 0;
         if(point.getX() > this.ValuesArray[AvailableNumberOfPoints-1].getX()){
-            index = AvailableNumberOfPoints;
-            if(this.ValuesArray.length>AvailableNumberOfPoints) {
-                AvailableNumberOfPoints++;
-            }
+            index = AvailableNumberOfPoints + 1;
         }
         else {
             while (ValuesArray[index].getX() < point.getX()) index++;
         }
-
         if(index < AvailableNumberOfPoints){
             if(AvailableNumberOfPoints <= this.ValuesArray.length){
                 FunctionPoint[] tmp = new FunctionPoint[getPointsCount()];

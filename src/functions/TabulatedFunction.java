@@ -26,7 +26,7 @@ public class TabulatedFunction {
 
     public TabulatedFunction(double leftX, double rightX, double[] values){
         this.ValuesArray = new FunctionPoint[values.length];
-        double size = ((rightX - leftX )/(values.length));
+        double size = ((rightX - leftX )/(values.length - 1));
 
         for (int i = 0; i < values.length; i++){
             this.ValuesArray[i] = new FunctionPoint(leftX + i * size, values[i]);

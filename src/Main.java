@@ -7,13 +7,13 @@ public class Main {
 
         double left = 0;
         double right = 4;
-        double[] values = { 1, 4 , 9 , 16};
+        double[] values = { -1, 1 , 3 , 5, 7};
         TabulatedFunction arr = new TabulatedFunction(left, right, values);
 
 
         arr.print();
         arr.deletePoint(1);
-        FunctionPoint n = new FunctionPoint(5,25);
+        FunctionPoint n = new FunctionPoint(6,36);
         arr.addPoint(n);
         System.out.println();
         arr.print();

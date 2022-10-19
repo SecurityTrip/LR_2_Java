@@ -106,7 +106,7 @@ public class TabulatedFunction {
         if(index < AvailableNumberOfPoints && index >= 0){
             return this.ValuesArray[index].getX();
         }
-        return Double.NaN;
+        else return Double.NaN;
     }
 
     void setPointX(int index, double x){
@@ -132,7 +132,7 @@ public class TabulatedFunction {
         if(index < AvailableNumberOfPoints && index >= 0){
             return this.ValuesArray[index].getY();
         }
-        return Double.NaN;
+        else return Double.NaN;
     }
 
     void setPointY(int index, double y){

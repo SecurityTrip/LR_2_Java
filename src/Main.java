@@ -12,14 +12,16 @@ public class Main {
 
 
         fir.print();
-        //fir.deletePoint(2);
+        fir.deletePoint(0);
         FunctionPoint n = new FunctionPoint(4,7);
-        fir.addPoint(n);
+        //fir.addPoint(n);
         System.out.println();
         fir.print();
 
-        System.out.println(fir.getFunctionValue(4.0));
+        //System.out.println(fir.getFunctionValue(4.0));
 
+        FunctionPoint a = fir.getPoint(0);
+        System.out.println(a.getX());
 
     }
 }

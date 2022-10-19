@@ -52,7 +52,7 @@ public class TabulatedFunction {
     }
 
     public double getFunctionValue(double x){
-        if((this.ValuesArray[0].getX() > x ) || (this.ValuesArray[ValuesArray.length-1].getX() < x)){
+        if((this.ValuesArray[ValuesArray.length-1].getX() < x) || (this.ValuesArray[0].getX() > x ) ){
             return Double.NaN;
         }
         int i = 0;
@@ -75,7 +75,7 @@ public class TabulatedFunction {
         return AvailableNumberOfPoints;
     }
 
-    FunctionPoint getPoint(int index){
+    public FunctionPoint getPoint(int index){
         if(index < AvailableNumberOfPoints && index >= 0){
             return new FunctionPoint(this.ValuesArray[index]);
         }
@@ -160,7 +160,6 @@ public class TabulatedFunction {
             AvailableNumberOfPoints--;
         }
     }
-
     public void addPoint(FunctionPoint point) {
         int index = 0;
         if(point.getX() > this.ValuesArray[AvailableNumberOfPoints-1].getX()){
